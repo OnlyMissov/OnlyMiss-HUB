@@ -15,34 +15,217 @@ local Teleport =  Tab:NewSection("Teleport")
 local Godm = Social:NewSection("GodMode")
 local Credfarm = farm:NewSection("Crefit Farm")
 local tptp = Social:NewSection("Tp to player")
-local ScreenGuis = Instance.new("ScreenGui")
-local TextBoxs = Instance.new("TextBox")
 
-
- tptp:NewButton("Открыть меню", "Вводишь ник и нажимаешь Y ", function(tpt)
- 	Frame = script.Parent.ScreenGuis
-	Frame.Draggable = true
-	Frame.Active = true
-	Frame.Selectable = true
-	ScreenGuis.Parent = game.CoreGui	
-		TextBoxs.Parent = ScreenGuis
-		TextBoxs.BackgroundColor3 = Color3.new(0.333333, 0.333333, 0.333333)
-		TextBoxs.Position = UDim2.new(0, 0, 1, -25)
-		TextBoxs.Size = UDim2.new(0, 150, 0, 25)
-		TextBoxs.Font = Enum.Font.SourceSans
-		TextBoxs.Text = "Введите ник игрока press Y"
-		TextBoxs.TextColor3 = Color3.new(1, 1, 1)
-		TextBoxs.TextScaled = true
-		TextBoxs.TextSize = 14
-		TextBoxs.TextWrapped = true
-			game:GetService("UserInputService").InputBegan:connect(function(key)
-			if key.KeyCode == Enum.KeyCode.Y then
-			local ooooooof = TextBoxs.Text
-			local plr1 = game.Players.LocalPlayer.Character
-			local plr2 = game.Workspace:FindFirstChild(ooooooof)
-			plr1.HumanoidRootPart.CFrame = plr2.HumanoidRootPart.CFrame * CFrame.new(0,2,0)
+--- Watermark
+math.randomseed(tick())
+ 
+local blurEffect = Instance.new("BlurEffect")
+ 
+local function loadAtom()
+	local AtomLoading = Instance.new("ScreenGui")
+	local AtomLogo = Instance.new("ImageLabel")
+	local soundEffect = Instance.new("Sound")
+	local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+ 
+	AtomLoading.Name = math.random(1, 385)
+	AtomLoading.Parent = game.CoreGui
+	AtomLoading.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ 
+	AtomLogo.Name = math.random(1, 385)
+	AtomLogo.Parent = AtomLoading
+	AtomLogo.AnchorPoint = Vector2.new(0.5, 0.5)
+	AtomLogo.BackgroundColor3 = Color3.new(1, 1, 1)
+	AtomLogo.BackgroundTransparency = 1
+	AtomLogo.BorderSizePixel = 0
+	AtomLogo.Position = UDim2.new(0.5, 0, 0.55, 0)
+	AtomLogo.Size = UDim2.new(0.723361611, 0, 0.413349509, 0)
+	AtomLogo.Image = "rbxassetid://2897909016"
+	AtomLogo.ImageTransparency = 1
+	AtomLogo.ScaleType = Enum.ScaleType.Fit
+ 
+	UIAspectRatioConstraint.Name = math.random(1, 385)
+	UIAspectRatioConstraint.Parent = AtomLogo
+	UIAspectRatioConstraint.AspectRatio = 2.2044892311096
+ 
+	blurEffect.Name = math.random(1, 385)
+	blurEffect.Parent = game:GetService("Lighting")
+	blurEffect.Size = 0
+ 
+	soundEffect.Name = math.random(1, 385)
+	soundEffect.Parent = game.CoreGui
+	soundEffect.SoundId = "rbxassetid://2897909016"
+	soundEffect.Volume = 2
+ 
+	soundEffect:Play()
+ 
+	spawn(function()
+		for i = 1, 20 do
+			blurEffect.Size = blurEffect.Size + 1
+			wait()
 		end
 	end)
+ 
+	spawn(function()
+		for i = 1, 10 do
+			AtomLogo.ImageTransparency = AtomLogo.ImageTransparency - 0.1
+			wait()
+		end
+	end)
+ 
+	spawn(function()
+		AtomLogo:TweenPosition(UDim2.new(0.5, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 1)
+	end)
+	wait(2)
+	spawn(function()
+		for i = 1, 10 do
+			AtomLogo.ImageTransparency = AtomLogo.ImageTransparency + 0.1
+			wait()
+		end
+	end)
+ 
+	wait(1)
+	soundEffect:Destroy()
+	AtomLoading:Destroy()
+end
+ 
+local function showUpdates()
+	local AtomUpdates = Instance.new("ScreenGui")
+	local mainUpdatesFrame = Instance.new("Frame")
+	local iconLabel = Instance.new("ImageLabel")
+	local updatesLabel = Instance.new("TextLabel")
+	local UITextSizeConstraint = Instance.new("UITextSizeConstraint")
+	local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+ 
+	AtomUpdates.Name = math.random(1, 385)
+	AtomUpdates.Parent = game.CoreGui
+	AtomUpdates.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ 
+	mainUpdatesFrame.Name = "mainUpdatesFrame"
+	mainUpdatesFrame.Parent = AtomUpdates
+	mainUpdatesFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+	mainUpdatesFrame.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+	mainUpdatesFrame.BackgroundTransparency = 1
+	mainUpdatesFrame.BorderSizePixel = 0
+	mainUpdatesFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+	mainUpdatesFrame.Size = UDim2.new(0.300000012, 0, 0.400000006, 0)
+ 
+	iconLabel.Name = math.random(1, 385)
+	iconLabel.Parent = mainUpdatesFrame
+	iconLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+	iconLabel.BackgroundTransparency = 1
+	iconLabel.BorderSizePixel = 0
+	iconLabel.Size = UDim2.new(1, 0, 0.200000003, 0)
+	iconLabel.Image = "rbxassetid://2897909016"
+	iconLabel.ImageTransparency = 1
+	iconLabel.ScaleType = Enum.ScaleType.Fit
+ 
+	updatesLabel.Name = math.random(1, 385)
+	updatesLabel.Parent = mainUpdatesFrame
+	updatesLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+	updatesLabel.BackgroundTransparency = 1
+	updatesLabel.BorderSizePixel = 0
+	updatesLabel.Position = UDim2.new(0, 0, 0.200000003, 0)
+	updatesLabel.Size = UDim2.new(1, 0, 0.800000012, 0)
+	updatesLabel.Font = Enum.Font.SourceSansLight
+	updatesLabel.Text = game:HttpGet(("https://robomathost.xyz/AtomWrapper/luamsg.txt"), true)
+	updatesLabel.TextColor3 = Color3.new(12, 12, 12)
+	updatesLabel.TextScaled = true
+	updatesLabel.TextSize = 60
+	updatesLabel.TextTransparency = 1
+	updatesLabel.TextWrapped = true
+	updatesLabel.TextYAlignment = Enum.TextYAlignment.Top
+
+	UITextSizeConstraint.Parent = updatesLabel
+	UITextSizeConstraint.MaxTextSize = 35
+
+	UIAspectRatioConstraint.Parent = mainUpdatesFrame
+	UIAspectRatioConstraint.AspectRatio = 0.94478154182434
+	spawn(function()
+		for i = 1, 10 do
+			mainUpdatesFrame.BackgroundTransparency = mainUpdatesFrame.BackgroundTransparency - 0.1
+			iconLabel.ImageTransparency = iconLabel.ImageTransparency - 0.1
+			updatesLabel.TextTransparency = updatesLabel.TextTransparency - 0.1
+			wait()
+		end
+	end)
+	wait(2.5)
+	spawn(function()
+		for i = 1, 10 do
+			mainUpdatesFrame.BackgroundTransparency = mainUpdatesFrame.BackgroundTransparency + 0.1
+			iconLabel.ImageTransparency = iconLabel.ImageTransparency + 0.1
+			updatesLabel.TextTransparency = updatesLabel.TextTransparency + 0.1
+			wait()
+		end
+	end)
+	spawn(function()
+		for i = 1, 20 do
+			blurEffect.Size = blurEffect.Size - 1
+			wait()
+		end
+	end)
+	wait(1)
+	AtomUpdates:Destroy()
+	blurEffect:Destroy()
+end
+loadAtom()
+showUpdates()
+
+--- ESP
+
+local Players = game:GetService("Players"):GetChildren()
+local RunService = game:GetService("RunService")
+local highlight = Instance.new("Highlight")
+highlight.Name = "Highlight"
+
+for i, v in pairs(Players) do
+	repeat wait() until v.Character
+	if v.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") == nil then
+	local highlightClone = highlight:Clone()
+	highlightClone.Adornee = v.Character
+	highlightClone.Parent = v.Character:FindFirstChild("HumanoidRootPart")
+	highlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+	highlightClone.Name = "Highlight"
+end		
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+	repeat wait() until player.Character
+	if player.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") == nil then
+	local highlightClone = highlight:Clone()
+	highlightClone.Adornee = player.Character
+	highlightClone.Parent = player.Character:FindFirstChild("HumanoidRootPart")
+	highlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+	highlightClone.Name = "Highlight"
+end
+end)
+
+game.Players.PlayerRemoving:Connect(function(playerRemoved)
+	playerRemoved.Character:FindFirstChild("HumanoidRootPart").Highlight:Destroy()
+end)
+
+RunService.Heartbeat:Connect(function()
+	for i, v in pairs(Players) do
+		repeat wait() until v.Character
+		if v.Character:FindFirstChild("HumanoidRootPart"):FindFirstChild("Highlight") == nil then
+		local highlightClone = highlight:Clone()
+		highlightClone.Adornee = v.Character
+		highlightClone.Parent = v.Character:FindFirstChild("HumanoidRootPart")
+		highlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+		highlightClone.Name = "Highlight"
+		task.wait()
+	end
+end
+end)	
+--- ESP OVER
+
+
+tptp:NewTextBox("Введи ник:", "Вводишь ник и нажимаешь на Enter", function(txt)
+	game:GetService("UserInputService").InputBegan:connect(function()
+		local ooooooof = TextBoxs.Text
+		local plr1 = game.Players.LocalPlayer.Character
+		local plr2 = game.Workspace:FindFirstChild(ooooooof)
+		plr1.HumanoidRootPart.CFrame = plr2.HumanoidRootPart.CFrame * CFrame.new(0,2,0)
+	end)	
 end)
 
 Credfarm:NewButton("Кликни чтобы начать фармить", "Фарм кредитов в режиме Hide in Seek Extreme", function(cred)
