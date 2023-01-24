@@ -3,18 +3,19 @@ local Window = Library.CreateLib("OnlyMiss HUB V1", "RJTheme7")
 
 local farm = Window:NewTab("Farming")
 local Tab = Window:NewTab("Movement")
-local Tab2 = Window:NewTab("Esp")
 local Social = Window:NewTab("Other")
 local vclip = Social:NewSection("Vclip")
 local Section1 = Social:NewSection("JumpPower")
 local fly = Social:NewSection("Fly")
-local Section2 = Tab2:NewSection("ESP")
 local Section3 = Tab:NewSection("Speed (Detected)")
 local Section4 = Tab:NewSection("Speed (UnDetected)")
 local Teleport =  Tab:NewSection("Teleport")
 local Godm = Social:NewSection("GodMode")
 local Credfarm = farm:NewSection("Crefit Farm")
 local tptp = Social:NewSection("Tp to player")
+local creditss = Window:NewTab("Credits")
+local creditss2 = creditss:NewSection("Developer")
+local creditss3 = creditss:NewSection("Designer")
 
 --- Watermark
 math.randomseed(tick())
@@ -219,12 +220,14 @@ end)
 --- ESP OVER
 
 
-tptp:NewTextBox("Введи ник:", "Вводишь ник и нажимаешь на Enter", function(txt)
-	game:GetService("UserInputService").InputBegan:connect(function()
-		local ooooooof = TextBoxs.Text
-		local plr1 = game.Players.LocalPlayer.Character
-		local plr2 = game.Workspace:FindFirstChild(ooooooof)
-		plr1.HumanoidRootPart.CFrame = plr2.HumanoidRootPart.CFrame * CFrame.new(0,2,0)
+tptp:NewButton("Not worked!!!", "Future work", function()
+	tptp:NewTextBox("Введи ник:", "Вводишь ник и нажимаешь на Enter", function(txt)
+		game:GetService("UserInputService").InputBegan:connect(function()
+			local ooooooof = TextBoxs.Text
+			local plr1 = game.Players.LocalPlayer.Character
+			local plr2 = game.Workspace:FindFirstChild(ooooooof)
+			plr1.HumanoidRootPart.CFrame = plr2.HumanoidRootPart.CFrame * CFrame.new(0,2,0)
+		end)
 	end)	
 end)
 
@@ -365,6 +368,12 @@ end)
 
 vclip:NewSlider("VClip", "Поднимает вас вверх, может багаться", 1000, 2, function(vclip)
 	game.Players.LocalPlayer.Character.Humanoid.HipHeight = vclip	
+end)
+
+creditss2:NewButton("Discord:! [OnlyMiss]#0001", "Number one developer", function()
+end)
+
+creditss3:NewButton("Discord:! [OnlyMiss]#0001", "Number one designer", function()
 end)
 
 while game:GetService("RunService").RenderStepped:wait() do
